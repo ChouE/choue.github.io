@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https:// choue.github.io</id>
+    <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2020-07-02T17:03:30.728Z</updated>
+    <updated>2020-07-03T06:56:51.569Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https:// choue.github.io"/>
-    <link rel="self" href="https:// choue.github.io/atom.xml"/>
+    <link rel="alternate" href="https://choue.github.io"/>
+    <link rel="self" href="https://choue.github.io/atom.xml"/>
     <subtitle>WHY</subtitle>
-    <logo>https:// choue.github.io/images/avatar.png</logo>
-    <icon>https:// choue.github.io/favicon.ico</icon>
+    <logo>https://choue.github.io/images/avatar.png</logo>
+    <icon>https://choue.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ChouEV</rights>
     <entry>
         <title type="html"><![CDATA[关于]]></title>
-        <id>https:// choue.github.io/post/about/</id>
-        <link href="https:// choue.github.io/post/about/">
+        <id>https://choue.github.io/post/about/</id>
+        <link href="https://choue.github.io/post/about/">
         </link>
         <updated>2020-07-02T11:02:53.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
@@ -36,8 +36,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https:// choue.github.io/post/hello-gridea/</id>
-        <link href="https:// choue.github.io/post/hello-gridea/">
+        <id>https://choue.github.io/post/hello-gridea/</id>
+        <link href="https://choue.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
