@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2020-07-13T14:11:07.107Z</updated>
+    <updated>2020-07-30T13:24:43.807Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://choue.github.io"/>
     <link rel="self" href="https://choue.github.io/atom.xml"/>
@@ -10,6 +10,67 @@
     <logo>https://choue.github.io/images/avatar.png</logo>
     <icon>https://choue.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ChouEV</rights>
+    <entry>
+        <title type="html"><![CDATA[WSL2]]></title>
+        <id>https://choue.github.io/post/wsl2/</id>
+        <link href="https://choue.github.io/post/wsl2/">
+        </link>
+        <updated>2020-07-30T12:15:40.000Z</updated>
+        <summary type="html"><![CDATA[<p>折腾windows 10中的WSL2</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>折腾windows 10中的WSL2</p>
+<!-- more -->
+<h2 id="和vmware的冲突解决">和VMware的冲突解决</h2>
+<p>安装了win10的2004预览版之后，由于wsl2的支持，自动开启了hyper-v，导致跟vmware发生冲突竞争</p>
+<p>想要正常VMware，需要关闭功能，使用管理员权限打开Windows Terminal：</p>
+<pre><code class="language-bash">bcdedit /set hypervisorlaunchtype off
+</code></pre>
+<p>如果需要使用使用wsl2和docker，打开：</p>
+<pre><code class="language-bash">bcdedit /set hypervisorlaunchtype auto
+</code></pre>
+<p><strong>每次调整都需要重启才能生效</strong></p>
+<h2 id="和代理软件的冲突">和代理软件的冲突</h2>
+<p>https://github.com/microsoft/WSL/issues/4177</p>
+<p>由于Proxy，出现的错误提示：</p>
+<blockquote>
+<p>参考的对象类型不支持尝试的操作。</p>
+</blockquote>
+<blockquote>
+<p>[process exited with code 4294967295]</p>
+</blockquote>
+<p>www.proxifier.com/tmp/Test20200228/NoLsp.exe<br>
+使用root权限运行以下语句，解决问题：</p>
+<pre><code>.\NoLsp.exe c:\windows\system32\wsl.exe
+</code></pre>
+<h2 id="换国内的源">换国内的源</h2>
+<p>备份：</p>
+<pre><code>cp /etc/apt/sources.list /etc/apt/sourses.list.bak
+</code></pre>
+<p>编辑：</p>
+<pre><code>sudo vim /etc/apt/sources.list
+</code></pre>
+<p>换源：</p>
+<pre><code>deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</code></pre>
+<p>更新：</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre>
+<h2 id="配置zsh">配置zsh</h2>
+<pre><code>sudo apt-get install zsh
+chsh -s /bin/zsh
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[考研中数据结构代码的书写规范及复杂度分析]]></title>
         <id>https://choue.github.io/post/kao-yan-zhong-shu-ju-jie-gou-dai-ma-de-shu-xie-gui-fan-ji-fu-za-du-fen-xi/</id>
