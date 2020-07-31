@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2020-07-30T13:24:43.807Z</updated>
+    <updated>2020-07-31T02:13:04.363Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://choue.github.io"/>
     <link rel="self" href="https://choue.github.io/atom.xml"/>
@@ -69,6 +69,77 @@ sudo apt-get upgrade
 <pre><code>sudo apt-get install zsh
 chsh -s /bin/zsh
 </code></pre>
+<h2 id="配置代理">配置代理</h2>
+<p>由于WSL2更加的独立，所以要单独配置代理。<br>
+使用的客户端为Clash for windows，打开Allow LAN选项。</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/07/31/xkhAyOGDKmCYJqn.png" alt="" loading="lazy"></figure>
+<p>运行以下命令获取主机ip：</p>
+<pre><code># 获取主机 IP
+# 主机 IP 保存在 /etc/resolv.conf 中
+export hostip=$(cat /etc/resolv.conf |grep -oP '(?&lt;=nameserver\ ).*')
+</code></pre>
+<p>配置代理端口，这里我的Clash端口http和socks都是7890，所以设置：</p>
+<pre><code>alias setss='export https_proxy=&quot;http://${hostip}:8888&quot;;export http_proxy=&quot;http://${hostip}:8888&quot;;export all_proxy=&quot;socks5://${hostip}:8889&quot;;'
+</code></pre>
+<p>之后调用命令<code>setss</code>即可配置代理，解决github等网站的访问问题。</p>
+<h2 id="安装-oh-my-zsh">安装 <code>oh-my-zsh</code></h2>
+<p>用于快速配置<code>zsh</code>。<br>
+直接用脚本安装即可：</p>
+<pre><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+</code></pre>
+<p>安装<code>zsh-syntax-hignlighting</code>:</p>
+<pre><code># 下载
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+# 移动到 plugins 文件夹中
+mv zsh-syntax-highlighting $ZSH_CUSTOM/plugins
+
+# 配置环境变量
+cd ~
+vim .zshrc
+
+#在 plugins 一列中添加 zsh-syntax-highlighting，如下
+plugins=(
+         git
+         zsh-syntax-highlighting
+         )
+
+# 在文件最后添加
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# 配置生效
+source ~/.zshrc
+</code></pre>
+<p>安装<code>zsh-autosuggestions</code>插件</p>
+<pre><code># 下载
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
+
+# 移动到 plugins 文件夹中
+mv zsh-autosuggestions $ZSH_CUSTOM/plugins
+
+# 配置环境变量
+cd ~
+vim .zshrc
+
+#在 plugins 一列中添加 zsh-autosuggestions，如下
+plugins=(
+         git
+         zsh-syntax-highlighting
+         zsh-autosuggestions
+         )
+
+# 在文件最后添加
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# 配置生效
+source ~/.zshrc
+</code></pre>
+<p>安装neofetch看看效果</p>
+<pre><code>apt install neofetch
+</code></pre>
+<p>输入命令<code>neofetch</code>即可看到效果。<br>
+<img src="https://i.loli.net/2020/07/31/ZdHcJiqsAI18SRQ.png" alt="" loading="lazy"></p>
+<h2 id="安装和配置docker">安装和配置Docker</h2>
 ]]></content>
     </entry>
     <entry>
