@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2020-07-31T02:13:04.363Z</updated>
+    <updated>2020-07-31T17:18:11.963Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://choue.github.io"/>
     <link rel="self" href="https://choue.github.io/atom.xml"/>
@@ -21,8 +21,9 @@
         <content type="html"><![CDATA[<p>折腾windows 10中的WSL2</p>
 <!-- more -->
 <h2 id="和vmware的冲突解决">和VMware的冲突解决</h2>
-<p>安装了win10的2004预览版之后，由于wsl2的支持，自动开启了hyper-v，导致跟vmware发生冲突竞争</p>
-<p>想要正常VMware，需要关闭功能，使用管理员权限打开Windows Terminal：</p>
+<p>安装了win10的2004预览版之后，由于wsl2的支持，自动开启了hyper-v，导致跟vmware发生冲突竞争<br>
+据说VMware15.5.5以上可以兼容，暂未测试。<br>
+想要正常VMware，需要关闭功能，使用管理员权限打开Windows Terminal：</p>
 <pre><code class="language-bash">bcdedit /set hypervisorlaunchtype off
 </code></pre>
 <p>如果需要使用使用wsl2和docker，打开：</p>
@@ -79,7 +80,7 @@ chsh -s /bin/zsh
 export hostip=$(cat /etc/resolv.conf |grep -oP '(?&lt;=nameserver\ ).*')
 </code></pre>
 <p>配置代理端口，这里我的Clash端口http和socks都是7890，所以设置：</p>
-<pre><code>alias setss='export https_proxy=&quot;http://${hostip}:8888&quot;;export http_proxy=&quot;http://${hostip}:8888&quot;;export all_proxy=&quot;socks5://${hostip}:8889&quot;;'
+<pre><code>alias setss='export https_proxy=&quot;http://${hostip}:7890&quot;;export http_proxy=&quot;http://${hostip}:8888&quot;;export all_proxy=&quot;socks5://${hostip}:7890&quot;;'
 </code></pre>
 <p>之后调用命令<code>setss</code>即可配置代理，解决github等网站的访问问题。</p>
 <h2 id="安装-oh-my-zsh">安装 <code>oh-my-zsh</code></h2>
@@ -140,6 +141,32 @@ source ~/.zshrc
 <p>输入命令<code>neofetch</code>即可看到效果。<br>
 <img src="https://i.loli.net/2020/07/31/ZdHcJiqsAI18SRQ.png" alt="" loading="lazy"></p>
 <h2 id="安装和配置docker">安装和配置Docker</h2>
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys  [key]
+# 设置稳定的存储库
+sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+
+# 更新 apt 包索引
+sudo apt-get update
+
+# 安装最新版本的 Docker 和 containerd
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre>
+<p>由于WSL2不能使用<code>systemctl</code>，这里使用命令<code>sudo service docker start</code>启动docker。可以使用命令<code>service --status -all</code>查看所有服务的状态。<br>
+运行<code>docker run hello-world</code>进行测试。</p>
+<h2 id="技巧">技巧</h2>
+<p>使用 Windows 应用和工具（如文件资源管理器）访问Linux根文件系统。</p>
+<pre><code># 切换到根目录
+cd ~
+# 句尾有个点
+explorer.exe .
+</code></pre>
+<h3 id="使用vs-code-连接wsl">使用VS Code 连接WSL</h3>
+<p>下载插件WSL。<br>
+左下角点击进行连接即可。<br>
+会打开一个窗口访问的是WSL系统。</p>
 ]]></content>
     </entry>
     <entry>
@@ -296,30 +323,6 @@ git push --mirror &lt;your new repo address on github&gt;
 <pre><code class="language-bash">cd ..
 rm -rf old-repo.git
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于]]></title>
-        <id>https://choue.github.io/post/about/</id>
-        <link href="https://choue.github.io/post/about/">
-        </link>
-        <updated>2020-07-02T11:02:53.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>欢迎来到我的Blog，很高兴遇见你！🤝</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>欢迎来到我的Blog，很高兴遇见你！🤝</p>
-</blockquote>
-<!-- more -->
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>使用Gridea管理的个人博客网站，随便写点东西</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>ChouEV</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p><a href="https://github.com/ChouE">Github</a><br>
-<a href="https://steamcommunity.com/id/ChouEV/">Steam</a><br>
-<a href="mailto:li945762681@gmail.com">Email</a></p>
 ]]></content>
     </entry>
     <entry>
