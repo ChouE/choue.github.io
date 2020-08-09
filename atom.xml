@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2020-08-01T05:45:16.699Z</updated>
+    <updated>2020-08-09T10:37:37.677Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://choue.github.io"/>
     <link rel="self" href="https://choue.github.io/atom.xml"/>
@@ -10,6 +10,83 @@
     <logo>https://choue.github.io/images/avatar.png</logo>
     <icon>https://choue.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, ChouEV</rights>
+    <entry>
+        <title type="html"><![CDATA[使用Jupyter NoteBook]]></title>
+        <id>https://choue.github.io/post/shi-yong-jupyter-notebook/</id>
+        <link href="https://choue.github.io/post/shi-yong-jupyter-notebook/">
+        </link>
+        <updated>2020-08-09T10:31:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>Jupyter NoteBook可以在文档中执行代码，添加markdown说明注释；分块运行测试，整体运行；以网页的形式进行分享；导出为多种格式的文档等。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Jupyter NoteBook可以在文档中执行代码，添加markdown说明注释；分块运行测试，整体运行；以网页的形式进行分享；导出为多种格式的文档等。</p>
+<!-- more -->
+<h2 id="安装和使用">安装和使用</h2>
+<p>Jupyter NoteBook借鉴了<a href="https://zh.wikipedia.org/wiki/%E6%96%87%E5%AD%A6%E7%BC%96%E7%A8%8B">文学编程</a>的模式。这种模式不同于传统的由计算机强加的编写程序的方式和顺序，而代之以让程序员用其逻辑和流程要求的顺序进行程序的开发。就好比自己写文章一样，在适当的部分加入代码，适当的部分加入说明，而且不失整体性。</p>
+<p>本身Jupyter是基于IPython的一个项目，随着项目的发展，Jupyter也不仅限于Python一种语言。</p>
+<ul>
+<li>
+<p>适合数据分析</p>
+<p>可以将数据分析的代码和结果都展示在一个窗口中，并且可以将说明文档也嵌入其中。</p>
+</li>
+<li>
+<p>支持多语言</p>
+<p>支持非常多的<a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">语言</a>。</p>
+</li>
+<li>
+<p>分享方便</p>
+<p>支持以网页的方式进行分享，使用<a href="https://nbviewer.jupyter.org/">nbviewer</a>进行文档分享</p>
+</li>
+<li>
+<p>可以远程</p>
+<p>如果有服务器，那么可以远程链接到服务器上进行编写和运行，比如<a href="https://jupyter.org/try">这里</a>可以使用官方给的远程服务</p>
+</li>
+<li>
+<p>交互式展示</p>
+<p>不仅可以输出图片、视频和数学公式，还可以呈现一些互动的可视化内容，比如可以缩放的地图或者是可以旋转的三维模型。这需要使用交互式插件来支持。</p>
+</li>
+</ul>
+<h3 id="安装">安装</h3>
+<pre><code class="language-python">pip install jupyter notebook
+</code></pre>
+<h3 id="运行">运行</h3>
+<p>在Windows Terminal 中，切换到想要的目录，然后输入：</p>
+<pre><code class="language-python">jupyter notebook
+</code></pre>
+<p>终端就会打开页面。</p>
+<figure data-type="image" tabindex="1"><img src="https://raw.githubusercontent.com/ChouE/image-host/master/img/image-20200809152022583.png" alt="image-20200809152022583" loading="lazy"></figure>
+<p>在终端也会显示日志。</p>
+<figure data-type="image" tabindex="2"><img src="https://raw.githubusercontent.com/ChouE/image-host/master/img/image-20200809151841461.png" alt="image-20200809151841461" loading="lazy"></figure>
+<p>在页面右上角new可以新建文件或者目录。</p>
+<p>如果要关闭运行的文档，可以点击文件前的复选框，然后<code>shutdown</code>。</p>
+<figure data-type="image" tabindex="3"><img src="https://raw.githubusercontent.com/ChouE/image-host/master/img/image-20200809152304888.png" alt="image-20200809152304888" loading="lazy"></figure>
+<p>如果想要终止Jupyter NoteBook的服务，需要在终端中<code>Ctrl + C</code>。</p>
+<h3 id="界面">界面</h3>
+<p>在界面中按<code>h</code>可以查看帮助，里面有快捷键说明，并且可以自定义快捷键。</p>
+<figure data-type="image" tabindex="4"><img src="https://raw.githubusercontent.com/ChouE/image-host/master/img/image-20200809160814511.png" alt="image-20200809160814511" loading="lazy"></figure>
+<p>在jupyter中，有两种模式，一种是编辑模式，这种模式可以编辑代码和文本，这种模式中文本框是绿色的。另一种是命令模式，可以使用各种快捷键进行操作。类似于Vim编辑器的模式。在文本框中按<code>Enter</code> 即可进入编辑，按<code>Esc</code> 进入命令模式。</p>
+<ul>
+<li>代码单元，按<code>y</code>切换单元到代码单元，按<code>Shift + Enter</code> 运行代码，结果会显示在代码块的下方。</li>
+</ul>
+<p>​       代码单元左边会有和IPython一样的行号，可以查看代码的执行顺序。</p>
+<ul>
+<li>Markdown单元，按<code>m</code> 切换到Markdown单元，可以以markdown的格式输入文档说明，插入链接、图片和数学公式等，同样也是按<code>Shift + Enter</code>进行渲染。</li>
+</ul>
+<p>按<code>b</code>键可以在下方添加新行，熟悉各种快捷键之后，对文档的编辑效率会大大提高。</p>
+<h2 id="magic功能">magic功能</h2>
+<p>Jupyter内置了很多功能，输入<code>lsmagic</code> 即可显示所有的命令。</p>
+<figure data-type="image" tabindex="5"><img src="https://raw.githubusercontent.com/ChouE/image-host/master/img/image-20200809171735096.png" alt="image-20200809171735096" loading="lazy"></figure>
+<p>这里的命令包括了两种，一种是使用一个<code>%</code>包围的命令，这种命令的生效范围是行，使用这种命令时可以省略前缀<code>%</code> 会自动补全。</p>
+<p>如果是两个<code>%%</code>包括的命令就是对整个文档生效的命令。</p>
+<h2 id="创建ppt">创建PPT</h2>
+<p>使用Jupyter可以创建PPT。</p>
+<p>进入[View -&gt; Cell Toolbar]，然后点击[Sideshow]。这样每个块的右边都显示了一个Slide Type。选择其作为幻灯片的什么部分，结构很简单，自己摸索以下就可以明白。然后在导出时就可以选择导出为Slide，一个HTML格式的PPT。</p>
+<h2 id="安装拓展">安装拓展</h2>
+<pre><code class="language-bash">pip install jupyter_contrib_nbextensions
+jupyter contrib nbextensions install - user
+</code></pre>
+<p>完成之后打开Jupyter就可以看到NBExtensions的选项卡。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[WSL2]]></title>
         <id>https://choue.github.io/post/wsl2/</id>
