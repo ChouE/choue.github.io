@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2020-08-11T18:04:35.427Z</updated>
+    <updated>2021-04-02T05:38:48.930Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://choue.github.io"/>
     <link rel="self" href="https://choue.github.io/atom.xml"/>
     <subtitle>WHY</subtitle>
     <logo>https://choue.github.io/images/avatar.png</logo>
     <icon>https://choue.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, ChouEV</rights>
+    <rights>All rights reserved 2021, ChouEV</rights>
     <entry>
         <title type="html"><![CDATA[使用Jupyter NoteBook]]></title>
         <id>https://choue.github.io/post/shi-yong-jupyter-notebook/</id>
@@ -244,92 +244,6 @@ explorer.exe .
 <p>下载插件WSL。<br>
 左下角点击进行连接即可。<br>
 会打开一个窗口访问的是WSL系统。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[考研中数据结构代码的书写规范及复杂度分析]]></title>
-        <id>https://choue.github.io/post/kao-yan-zhong-shu-ju-jie-gou-dai-ma-de-shu-xie-gui-fan-ji-fu-za-du-fen-xi/</id>
-        <link href="https://choue.github.io/post/kao-yan-zhong-shu-ju-jie-gou-dai-ma-de-shu-xie-gui-fan-ji-fu-za-du-fen-xi/">
-        </link>
-        <updated>2020-07-13T05:13:45.000Z</updated>
-        <summary type="html"><![CDATA[<p>针对考研中数据结构和算法内容代码的手写要求<br>
-算法的复杂度分析问题</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>针对考研中数据结构和算法内容代码的手写要求<br>
-算法的复杂度分析问题</p>
-<!-- more -->
-<h2 id="手写规范">手写规范</h2>
-<p>在考研初试中的代码都是手写，判断交给的是人，不是编译器，所以在书写上尽量追求一个易懂的规范。<br>
-首先是明确哪些东西要写，哪些不要写。<br>
-例如<code>include&lt;iostream&gt;</code>,<code>using namespace std</code>这些要在写程序时写出的就不需要在试卷上写出。<br>
-对于定义常量的语句<code>define N 50</code>，不需要明显写出，在需要处使用注释说明该常量已经被定义过即可。<br>
-对于所谓的main函数，在答题时也不需要按部就班的写出来，可以把用到的功能函数的接口写清楚即可。<br>
-下面给出一个例子：<br>
-设一个n个整数的数组R，将R中的序列循环左移P个位置。<br>
-将问题分解为三步💃：</p>
-<ul>
-<li>前P个元素逆置</li>
-<li>后面的元素逆置</li>
-<li>整体进行一次逆置</li>
-</ul>
-<p>设计一个可以对数组某子序列进行逆序的函数，然后调用即可。</p>
-<pre><code class="language-c">void Reverse(int R[],int l,int r){
-    int i, j;
-    int temp;
-    for (i = l , j = r; i&lt;j; ++i,--j ){
-        temp = R[i];
-        R[i] = R[j];
-        R[j] = temp;
-    }
-}
-
-void RCR (int R[],int n,int p){
-    if (p&lt;=0||p&gt;n){
-        cout &lt;&lt; &quot;ERROR&quot;&lt;&lt; endl;
-    }
-    else{
-        Reverse(R,0,p-1);
-        Reverse(R,p,n-1);
-        Reverse(R,0,n-1);
-    }
-}
-</code></pre>
-<p>在上述例子中，RCR这个函数就是最终的程序接口，有了这个函数就可以不写main函数。</p>
-<h2 id="指针">指针</h2>
-<p>指针型变量定义：</p>
-<pre><code class="language-c">int *a;
-char *c;
-float *b;
-</code></pre>
-<p><code>*</code>这个符号也是取地址运算符，对于指针变量，如果要取到其地址中对应的值，使用<code>x = *a</code>，即可取到a变量对应地址的值。<br>
-最常用的地方为构造链表的结点、二叉树结点等。<br>
-这里的构造实际上是构造一个结构型的变量。<br>
-以链表的结点为例子，一个链表的结点需要两个域，数据域用来放数据，指针域用来存下一个结点的地址。</p>
-<pre><code class="language-c">typedef struct Node{
-    int data;
-    struct Node *next;
-}Node;
-</code></pre>
-<p>二叉树结点：</p>
-<pre><code class="language-c">typedef struct BTNode{
-    int data;
-    struct BTNode *lchild;
-    struct BTNode *rchild;
-}BTnode;
-</code></pre>
-<p>定义好结构型之后，就可以通过结构来制作新的结点：</p>
-<pre><code class="language-c">BTNode BT;
-</code></pre>
-<p>或者使用：</p>
-<pre><code class="language-c">BTNode *BT;
-BT = (BTNode *)malloc(sizeof(BTNode));
-</code></pre>
-<p>比较常用的是第二种，第二种的好处如下是声明出来的变量是指针型的，比较方便使用，需要的时候也可以离开原来的结点，换一个结点，但第一种就不行。声明的过程是先声明一个指针，然后通过<code>malloc</code>函数进行空间的分配，分配的空间大小是<code>BTNode</code>这个结构型的大小。其实这个语句就是中间是<code>malloc</code>，然后左右两边是这个结构的名称，前面是指针，后面有个<code>sizeof</code>。</p>
-<p>对于1和2这两种方式，取分量的操作也不同，前面是用<code>x=BT.data</code>，后面使用<code>x=BT-&gt;data</code>。</p>
-<h2 id="复杂度分析">复杂度分析</h2>
-<p><strong>将算法中基本操作的执行次数作为算法的时间复杂度度量</strong>，对于时间复杂度的分析，要点在于算法中哪些操作是基本操作，然后计算出基本操作的执行次数即可。<br>
-有的算法中，基本操作的执行次数不仅跟初始输入有关系，也跟数据本身有关系。例如一些排序算法，同样有n个数据，但数据初始有序性不同，则基本操作的执行次数也不同。一般按照使得基本操作执行次数最多的输入来计算时间复杂度，即将最坏的情况作为算法时间复杂度的度量。<br>
-空间复杂度主要考虑临时占用的内存空间的大小。</p>
 ]]></content>
     </entry>
     <entry>
