@@ -180,7 +180,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title">
-                                Github 裸仓库
+                                笔记：Competitve Programmer&#39;s Handbook (2)
                             </h1>
                             
                                     <!--zh-->
@@ -189,20 +189,12 @@
                                         <a itemprop="author" rel="author" href="/">
                                             ChouEV
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-07-07</a></span>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2021-04-27</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">2.0
+                                    href="#">0.0
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">532</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">5</a></span>
                                         
-                                            <span class="post-category">&#x5206;&#x7C7B;:
-                                
-                                <a href="https://choue.github.io/tag/AfVc4u-8r/">Git</a>
-                                
-                                <a href="https://choue.github.io/tag/xE9AF5b0t4/">Github</a>
-                                
-                            </span>
-                                            
                                                 阅读量:
                                                 <span data-hk-page="current"> - </span>
                                                 
@@ -210,69 +202,8 @@
                                     
                         </header>
                         
-                            <img class="post-feature-image" src="https://img1.picloli-1.xyz/2020/06/19/__original_drawn_by_haori_iori__98e96032c526f0f1ae28b7e76356909b.jpg" alt="">
-                          
                         <div class="post-content">
-                            <p>通常我们会使用<code>git init</code>来初始化Git本地仓库。</p>
-<!-- more -->
-<h2 id="基本用法">基本用法</h2>
-<ul>
-<li>将当前目录转换为一个本地仓库</li>
-</ul>
-<pre><code class="language-bash">git init
-</code></pre>
-<p>命令执行之后在本地生成一个<code>.git</code>文件夹，用来追踪仓库所有的变更。<br>
-可以使用<code>tree</code>命令打印目录结构。</p>
-<ul>
-<li>创建一个空的本地仓库</li>
-</ul>
-<pre><code class="language-bash">git init &lt;repo&gt;
-</code></pre>
-<p>命令执行之后，会在当前目录下生成一个新的名为<code>&lt;repo&gt;</code>的目录，里面只有<code>.git</code>目录。</p>
-<h2 id="裸仓库">裸仓库</h2>
-<ul>
-<li>指定某个目录成为中心仓库（裸仓库）</li>
-</ul>
-<pre><code class="language-bash">git init --bare &lt;repo&gt;
-</code></pre>
-<p>这个命令执行之后，在本地会创建一个名为repo的目录，里面包含着Git的基本目录，这里一般的命名会写成<code>repo.git</code>的形式，对于<code>--bare</code>这个参数的含义，是生成的裸仓库，不包含工作区，所以不能在这个目录下面使用一般的Git命令。</p>
-<h2 id="对比">对比</h2>
-<p>对比使用传统的<code>git init</code>和使用加参数的<code>--bare</code>的区别。比较两个仓库的config文件：</p>
-<ul>
-<li>git init<pre><code class="language-js">[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = false
-  logallrefupdates = true
-  ignorecase = true
-  precomposeunicode = true
-</code></pre>
-</li>
-<li>加参数的<pre><code class="language-js">[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = true
-  ignorecase = true
-  precomposeunicode = true
-</code></pre>
-</li>
-</ul>
-<p>最明显的差异在于使用<code>bare</code>配置项是否为<code>true</code>，此外不加<code>--bare</code>参数的本地仓库配置中有一项<code>logallrefupdates = true</code>，即记录所有的ref更新。<br>
-因此，在裸仓库上不会存在直接的提交变更等操作，但裸仓库可以正常的被<code>clone</code>和<code>push</code>。</p>
-<h2 id="github上的用法">Github上的用法</h2>
-<p>裸仓库可以用来复制仓库。<br>
-因为通过<code>fork</code>来的仓库会受到一些限制，比如不能设置为私人仓库等，如果没有向原仓库<code>pull request</code>的需求的话，可以选择创造一个仓库的镜像到自己的Github上。</p>
-<p>首先要在自己的Github上创建一个新的repo，然后在本地clone一个裸仓库。</p>
-<pre><code class="language-bash">git clone --bare &lt;address&gt;
-</code></pre>
-<p>然后使用<code>mirror-push</code>：</p>
-<pre><code class="language-bash">cd old-repo.git
-git push --mirror &lt;your new repo address on github&gt;
-</code></pre>
-<p>最后删除位于本地的裸仓库即可：</p>
-<pre><code class="language-bash">cd ..
-rm -rf old-repo.git
-</code></pre>
+                            <h1 id="时间复杂度">时间复杂度</h1>
 
                         </div>
                         
@@ -287,7 +218,7 @@ rm -rf old-repo.git
 
                                                 <p class="copyright-item">
                                                     <span>&#x6C38;&#x4E45;&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://choue.github.io/post/github-luo-cang-ku/">https://choue.github.io/post/github-luo-cang-ku/</a></span>
+                                                    <span><a href="https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/">https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -302,11 +233,9 @@ rm -rf old-repo.git
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://choue.github.io/post/github-luo-cang-ku/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://choue.github.io/post/github-luo-cang-ku/&sharesource=qzone&title=Github 裸仓库&pics=https://choue.github.io/images/avatar.png?v=1619459868015&summary=&lt;p&gt;通常我们会使用&lt;code&gt;git init&lt;/code&gt;来初始化Git本地仓库。&lt;/p&gt;
-"><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://choue.github.io/post/github-luo-cang-ku/&sharesource=weibo&title=Github 裸仓库 + " - " + &lt;p&gt;通常我们会使用&lt;code&gt;git init&lt;/code&gt;来初始化Git本地仓库。&lt;/p&gt;
-&pic="https://choue.github.io/images/avatar.png?v=1619459868015 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/&sharesource=qzone&title=笔记：Competitve Programmer&#39;s Handbook (2)&pics=https://choue.github.io/images/avatar.png?v=1619459868015&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/&sharesource=weibo&title=笔记：Competitve Programmer&#39;s Handbook (2) + " - " + &pic="https://choue.github.io/images/avatar.png?v=1619459868015 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -316,16 +245,6 @@ rm -rf old-repo.git
                                                                                     <span>&#x6807;&#x7B7E;:</span>
                                                                                     <span class="tag ">
                         
-                        
-                        <a href="https://choue.github.io/tag/AfVc4u-8r/">#
-                    Git
-                        </a>
-                        
-                        <a href="https://choue.github.io/tag/xE9AF5b0t4/">#
-                    Github
-                        </a>
-                        
-                            
                                 </span>
                                                                                 </div>
                                                                                 <div>
@@ -340,11 +259,11 @@ rm -rf old-repo.git
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://choue.github.io/post/wsl2/">
-                                                                                            WSL2
-                                                                                        </a>
-                                                                                        
                                                                                             
+                                                                                                <a class="next" rel="next" href="https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/">
+                                                                                                    笔记：Competitve Programmer&#39;s Handbook (1)
+                                                                                                </a>
+                                                                                                
                                                                                 </section>
                     </article>
                 </div>

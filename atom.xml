@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://choue.github.io</id>
     <title>ChouEV</title>
-    <updated>2021-04-26T06:13:27.932Z</updated>
+    <updated>2021-04-26T17:58:07.953Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://choue.github.io"/>
     <link rel="self" href="https://choue.github.io/atom.xml"/>
@@ -10,6 +10,139 @@
     <logo>https://choue.github.io/images/avatar.png</logo>
     <icon>https://choue.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, ChouEV</rights>
+    <entry>
+        <title type="html"><![CDATA[笔记：Competitve Programmer's Handbook (2)]]></title>
+        <id>https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/</id>
+        <link href="https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/">
+        </link>
+        <updated>2021-04-26T17:41:11.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="时间复杂度">时间复杂度</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[笔记：Competitve Programmer's Handbook (1)]]></title>
+        <id>https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/</id>
+        <link href="https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/">
+        </link>
+        <updated>2021-04-26T06:21:58.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="基础">基础</h1>
+<h2 id="语言">语言</h2>
+<p>两个部分：算法设计和算法实现</p>
+<p>优秀的code style：直接且明确</p>
+<p>不同于传统编程，因为不需要后续维护，只需要正确而且简单即可，节约时间非常重要，因为时间有限</p>
+<pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+    //solution comes here
+}
+</code></pre>
+<p>include这行将整个标准库包括，可以直接使用<code>iostream</code>、<code>vector</code>、<code>algorithm</code>中的库函数和方法。</p>
+<h2 id="输入输出">输入输出</h2>
+<p>输入输出可能成为程序的瓶颈，使用<code>\n</code>进行换行往往比<code>endl</code>要快，因为使用<code>endl</code>需要缓冲操作。</p>
+<p>使用c语言的 输入输出<code>printf</code>和<code>scanf</code>往往也快一点，但使用起来没那么简单。</p>
+<p>使用<code>getline()</code>直接输入一行：</p>
+<pre><code class="language-c++">string s;
+getline(cin,s);
+</code></pre>
+<p>如果输入的数据数量未知：</p>
+<pre><code class="language-c++">while(cin&gt;&gt;x){
+    //code
+}
+</code></pre>
+<p>使用文件重定向输入输出：</p>
+<pre><code class="language-c++">freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);
+freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);
+</code></pre>
+<h2 id="处理数据">处理数据</h2>
+<h3 id="整数">整数</h3>
+<p>最常用的类型为<code>int</code>，32位。<code>int</code>的范围不够可以选择<code>long long</code>的64位。</p>
+<p>注意数据转换时可能隐藏的陷阱：</p>
+<pre><code class="language-c++">int a = 123456789;
+long long b = a*a;
+cout&lt;&lt;b&lt;&lt;&quot;\n&quot;; //-1757895751
+</code></pre>
+<p>这里先在<code>int</code>的范围内进行了乘法运算，发生了溢出，然后在赋值运算处进行类型转换，解决这一问题：</p>
+<pre><code class="language-c++">int a = 123456789;
+long long b = (long long)a*a;
+cout&lt;&lt;b&lt;&lt;&quot;\n&quot;;
+</code></pre>
+<h3 id="模运算">模运算</h3>
+<p>使用模运算处理一些大数运算，例如计算<code>n!</code>的余数，如果直接计算出<code>n!</code>可能发生溢出，则在每次乘积之后进行一次模运算，以免数据过大。</p>
+<pre><code class="language-C++">long long x = 1;
+for (int i = 2; i &lt;= n; ++i){
+    x = (x*i)%m;
+}
+cout&lt;&lt; x%m &lt;&lt; &quot;\n&quot;;
+</code></pre>
+<h2 id="浮点数">浮点数</h2>
+<p>计算精度问题引起的问题：</p>
+<p><code>0.3*3+0.1 != 1</code></p>
+<p>因此对于浮点数，使用<code>==</code>进行比较会产生意料之外的问题：</p>
+<pre><code class="language-C++">if (abs (a-b) &lt; 1e-9){
+    // a and b are equal
+}
+</code></pre>
+<p>使用绝对值差小于一个很小的数来代替<code>==</code>进行比较。</p>
+<h2 id="缩短代码">缩短代码</h2>
+<p>缩短代码是一个实用的技巧，因为需要尽量快速的完成任务。</p>
+<h3 id="类型名重定义">类型名重定义</h3>
+<pre><code class="language-c++">typedef long long ll;
+typedef vector&lt;int&gt; vi;
+typedef pair&lt;int,int&gt; pi;
+</code></pre>
+<h3 id="宏">宏</h3>
+<pre><code class="language-c++">#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+</code></pre>
+<p>定义之后：</p>
+<pre><code class="language-c++">v.push_back(make_pair(y1,x1));
+v.push_back(make_pair(y2,x2));
+int d = v[i].first+v[i].second;
+</code></pre>
+<p>可以写为：</p>
+<pre><code class="language-c++">v.PB(MP(y1,x1));
+v.PB(MP(y2,x2));
+int d = v[i].F+v[i].S;
+</code></pre>
+<p>也可以用宏定义函数：</p>
+<pre><code class="language-c++">#define REP(i,a,b) for (int i=a;i &lt;= b; ++i)
+
+for (int i=1; i &lt; n; ++i){
+    search(i);
+}
+//
+REP(i,1,n){
+    search(i);
+}
+</code></pre>
+<p>由于是直接替换，所以可能造成一些问题，例如：</p>
+<pre><code class="language-c++">#define SQ(a) a*a
+//a的平方
+cout &lt;&lt; SQ(3+3) &lt;&lt; &quot;\n&quot;; //3+3*3+3 = 15
+
+#define SQ(a) (a)*(a)
+cout &lt;&lt; SQ(3+3) &lt;&lt; &quot;\n&quot;; //(3+3)*(3+3) = 36 结果正确
+</code></pre>
+<h2 id="数学">数学</h2>
+<h3 id="求和公式">求和公式</h3>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mi>k</mi><mi>p</mi></msup><mo>=</mo><msup><mn>1</mn><mi>p</mi></msup><mo>+</mo><msup><mn>2</mn><mi>p</mi></msup><mo>+</mo><mo>⋯</mo><mo>+</mo><msup><mi>n</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">\sum_{k=1}^nk^p=1^p+2^p+\cdots+n^p
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9535100000000005em;vertical-align:-1.302113em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.302113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.797722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.797722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.714392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B9%82%E6%B1%82%E5%92%8C">Faulhaber’s formula</a></p>
+<h3 id="集合">集合</h3>
+<p>交并补差运算</p>
+<h3 id="逻辑运算">逻辑运算</h3>
+<h3 id="函数">函数</h3>
+<p>向上取整 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌈</mo><mi>x</mi><mo>⌉</mo></mrow><annotation encoding="application/x-tex">\lceil x \rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathdefault">x</span><span class="mclose">⌉</span></span></span></span></p>
+<p>向下取整<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌊</mo><mi>x</mi><mo>⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor x \rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord mathdefault">x</span><span class="mclose">⌋</span></span></span></span></p>
+<pre><code>ceil 表示天花板，即向上取整，floor表示地板，即向下取整
+</code></pre>
+<p>最大值<code>max()</code></p>
+<p>最小值<code>min()</code></p>
+<p>阶乘、斐波那契 ——递归</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[使用Jupyter NoteBook]]></title>
         <id>https://choue.github.io/post/shi-yong-jupyter-notebook/</id>

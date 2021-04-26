@@ -180,7 +180,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title">
-                                Github 裸仓库
+                                笔记：Competitve Programmer&#39;s Handbook (1)
                             </h1>
                             
                                     <!--zh-->
@@ -189,20 +189,12 @@
                                         <a itemprop="author" rel="author" href="/">
                                             ChouEV
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-07-07</a></span>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2021-04-26</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">2.0
+                                    href="#">3.7
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">532</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">838</a></span>
                                         
-                                            <span class="post-category">&#x5206;&#x7C7B;:
-                                
-                                <a href="https://choue.github.io/tag/AfVc4u-8r/">Git</a>
-                                
-                                <a href="https://choue.github.io/tag/xE9AF5b0t4/">Github</a>
-                                
-                            </span>
-                                            
                                                 阅读量:
                                                 <span data-hk-page="current"> - </span>
                                                 
@@ -210,69 +202,125 @@
                                     
                         </header>
                         
-                            <img class="post-feature-image" src="https://img1.picloli-1.xyz/2020/06/19/__original_drawn_by_haori_iori__98e96032c526f0f1ae28b7e76356909b.jpg" alt="">
+                            <img class="post-feature-image" src="https://huiji-public.huijistatic.com/gbf/uploads/6/67/Zoom_3040130000_02.png" alt="">
                           
                         <div class="post-content">
-                            <p>通常我们会使用<code>git init</code>来初始化Git本地仓库。</p>
-<!-- more -->
-<h2 id="基本用法">基本用法</h2>
-<ul>
-<li>将当前目录转换为一个本地仓库</li>
-</ul>
-<pre><code class="language-bash">git init
+                            <h1 id="基础">基础</h1>
+<h2 id="语言">语言</h2>
+<p>两个部分：算法设计和算法实现</p>
+<p>优秀的code style：直接且明确</p>
+<p>不同于传统编程，因为不需要后续维护，只需要正确而且简单即可，节约时间非常重要，因为时间有限</p>
+<pre><code class="language-c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+    //solution comes here
+}
 </code></pre>
-<p>命令执行之后在本地生成一个<code>.git</code>文件夹，用来追踪仓库所有的变更。<br>
-可以使用<code>tree</code>命令打印目录结构。</p>
-<ul>
-<li>创建一个空的本地仓库</li>
-</ul>
-<pre><code class="language-bash">git init &lt;repo&gt;
+<p>include这行将整个标准库包括，可以直接使用<code>iostream</code>、<code>vector</code>、<code>algorithm</code>中的库函数和方法。</p>
+<h2 id="输入输出">输入输出</h2>
+<p>输入输出可能成为程序的瓶颈，使用<code>\n</code>进行换行往往比<code>endl</code>要快，因为使用<code>endl</code>需要缓冲操作。</p>
+<p>使用c语言的 输入输出<code>printf</code>和<code>scanf</code>往往也快一点，但使用起来没那么简单。</p>
+<p>使用<code>getline()</code>直接输入一行：</p>
+<pre><code class="language-c++">string s;
+getline(cin,s);
 </code></pre>
-<p>命令执行之后，会在当前目录下生成一个新的名为<code>&lt;repo&gt;</code>的目录，里面只有<code>.git</code>目录。</p>
-<h2 id="裸仓库">裸仓库</h2>
-<ul>
-<li>指定某个目录成为中心仓库（裸仓库）</li>
-</ul>
-<pre><code class="language-bash">git init --bare &lt;repo&gt;
+<p>如果输入的数据数量未知：</p>
+<pre><code class="language-c++">while(cin&gt;&gt;x){
+    //code
+}
 </code></pre>
-<p>这个命令执行之后，在本地会创建一个名为repo的目录，里面包含着Git的基本目录，这里一般的命名会写成<code>repo.git</code>的形式，对于<code>--bare</code>这个参数的含义，是生成的裸仓库，不包含工作区，所以不能在这个目录下面使用一般的Git命令。</p>
-<h2 id="对比">对比</h2>
-<p>对比使用传统的<code>git init</code>和使用加参数的<code>--bare</code>的区别。比较两个仓库的config文件：</p>
-<ul>
-<li>git init<pre><code class="language-js">[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = false
-  logallrefupdates = true
-  ignorecase = true
-  precomposeunicode = true
+<p>使用文件重定向输入输出：</p>
+<pre><code class="language-c++">freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);
+freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);
 </code></pre>
-</li>
-<li>加参数的<pre><code class="language-js">[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = true
-  ignorecase = true
-  precomposeunicode = true
+<h2 id="处理数据">处理数据</h2>
+<h3 id="整数">整数</h3>
+<p>最常用的类型为<code>int</code>，32位。<code>int</code>的范围不够可以选择<code>long long</code>的64位。</p>
+<p>注意数据转换时可能隐藏的陷阱：</p>
+<pre><code class="language-c++">int a = 123456789;
+long long b = a*a;
+cout&lt;&lt;b&lt;&lt;&quot;\n&quot;; //-1757895751
 </code></pre>
-</li>
-</ul>
-<p>最明显的差异在于使用<code>bare</code>配置项是否为<code>true</code>，此外不加<code>--bare</code>参数的本地仓库配置中有一项<code>logallrefupdates = true</code>，即记录所有的ref更新。<br>
-因此，在裸仓库上不会存在直接的提交变更等操作，但裸仓库可以正常的被<code>clone</code>和<code>push</code>。</p>
-<h2 id="github上的用法">Github上的用法</h2>
-<p>裸仓库可以用来复制仓库。<br>
-因为通过<code>fork</code>来的仓库会受到一些限制，比如不能设置为私人仓库等，如果没有向原仓库<code>pull request</code>的需求的话，可以选择创造一个仓库的镜像到自己的Github上。</p>
-<p>首先要在自己的Github上创建一个新的repo，然后在本地clone一个裸仓库。</p>
-<pre><code class="language-bash">git clone --bare &lt;address&gt;
+<p>这里先在<code>int</code>的范围内进行了乘法运算，发生了溢出，然后在赋值运算处进行类型转换，解决这一问题：</p>
+<pre><code class="language-c++">int a = 123456789;
+long long b = (long long)a*a;
+cout&lt;&lt;b&lt;&lt;&quot;\n&quot;;
 </code></pre>
-<p>然后使用<code>mirror-push</code>：</p>
-<pre><code class="language-bash">cd old-repo.git
-git push --mirror &lt;your new repo address on github&gt;
+<h3 id="模运算">模运算</h3>
+<p>使用模运算处理一些大数运算，例如计算<code>n!</code>的余数，如果直接计算出<code>n!</code>可能发生溢出，则在每次乘积之后进行一次模运算，以免数据过大。</p>
+<pre><code class="language-C++">long long x = 1;
+for (int i = 2; i &lt;= n; ++i){
+    x = (x*i)%m;
+}
+cout&lt;&lt; x%m &lt;&lt; &quot;\n&quot;;
 </code></pre>
-<p>最后删除位于本地的裸仓库即可：</p>
-<pre><code class="language-bash">cd ..
-rm -rf old-repo.git
+<h2 id="浮点数">浮点数</h2>
+<p>计算精度问题引起的问题：</p>
+<p><code>0.3*3+0.1 != 1</code></p>
+<p>因此对于浮点数，使用<code>==</code>进行比较会产生意料之外的问题：</p>
+<pre><code class="language-C++">if (abs (a-b) &lt; 1e-9){
+    // a and b are equal
+}
 </code></pre>
+<p>使用绝对值差小于一个很小的数来代替<code>==</code>进行比较。</p>
+<h2 id="缩短代码">缩短代码</h2>
+<p>缩短代码是一个实用的技巧，因为需要尽量快速的完成任务。</p>
+<h3 id="类型名重定义">类型名重定义</h3>
+<pre><code class="language-c++">typedef long long ll;
+typedef vector&lt;int&gt; vi;
+typedef pair&lt;int,int&gt; pi;
+</code></pre>
+<h3 id="宏">宏</h3>
+<pre><code class="language-c++">#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+</code></pre>
+<p>定义之后：</p>
+<pre><code class="language-c++">v.push_back(make_pair(y1,x1));
+v.push_back(make_pair(y2,x2));
+int d = v[i].first+v[i].second;
+</code></pre>
+<p>可以写为：</p>
+<pre><code class="language-c++">v.PB(MP(y1,x1));
+v.PB(MP(y2,x2));
+int d = v[i].F+v[i].S;
+</code></pre>
+<p>也可以用宏定义函数：</p>
+<pre><code class="language-c++">#define REP(i,a,b) for (int i=a;i &lt;= b; ++i)
+
+for (int i=1; i &lt; n; ++i){
+    search(i);
+}
+//
+REP(i,1,n){
+    search(i);
+}
+</code></pre>
+<p>由于是直接替换，所以可能造成一些问题，例如：</p>
+<pre><code class="language-c++">#define SQ(a) a*a
+//a的平方
+cout &lt;&lt; SQ(3+3) &lt;&lt; &quot;\n&quot;; //3+3*3+3 = 15
+
+#define SQ(a) (a)*(a)
+cout &lt;&lt; SQ(3+3) &lt;&lt; &quot;\n&quot;; //(3+3)*(3+3) = 36 结果正确
+</code></pre>
+<h2 id="数学">数学</h2>
+<h3 id="求和公式">求和公式</h3>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mi>k</mi><mi>p</mi></msup><mo>=</mo><msup><mn>1</mn><mi>p</mi></msup><mo>+</mo><msup><mn>2</mn><mi>p</mi></msup><mo>+</mo><mo>⋯</mo><mo>+</mo><msup><mi>n</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">\sum_{k=1}^nk^p=1^p+2^p+\cdots+n^p
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.9535100000000005em;vertical-align:-1.302113em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.302113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.797722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.797722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.714392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B9%82%E6%B1%82%E5%92%8C">Faulhaber’s formula</a></p>
+<h3 id="集合">集合</h3>
+<p>交并补差运算</p>
+<h3 id="逻辑运算">逻辑运算</h3>
+<h3 id="函数">函数</h3>
+<p>向上取整 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌈</mo><mi>x</mi><mo>⌉</mo></mrow><annotation encoding="application/x-tex">\lceil x \rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌈</span><span class="mord mathdefault">x</span><span class="mclose">⌉</span></span></span></span></p>
+<p>向下取整<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌊</mo><mi>x</mi><mo>⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor x \rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord mathdefault">x</span><span class="mclose">⌋</span></span></span></span></p>
+<pre><code>ceil 表示天花板，即向上取整，floor表示地板，即向下取整
+</code></pre>
+<p>最大值<code>max()</code></p>
+<p>最小值<code>min()</code></p>
+<p>阶乘、斐波那契 ——递归</p>
 
                         </div>
                         
@@ -287,7 +335,7 @@ rm -rf old-repo.git
 
                                                 <p class="copyright-item">
                                                     <span>&#x6C38;&#x4E45;&#x94FE;&#x63A5;:</span>
-                                                    <span><a href="https://choue.github.io/post/github-luo-cang-ku/">https://choue.github.io/post/github-luo-cang-ku/</a></span>
+                                                    <span><a href="https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/">https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/</a></span>
                                                 </p>
 
                                                 <p class="copyright-item">
@@ -302,11 +350,9 @@ rm -rf old-repo.git
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://choue.github.io/post/github-luo-cang-ku/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://choue.github.io/post/github-luo-cang-ku/&sharesource=qzone&title=Github 裸仓库&pics=https://choue.github.io/images/avatar.png?v=1619459868015&summary=&lt;p&gt;通常我们会使用&lt;code&gt;git init&lt;/code&gt;来初始化Git本地仓库。&lt;/p&gt;
-"><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://choue.github.io/post/github-luo-cang-ku/&sharesource=weibo&title=Github 裸仓库 + " - " + &lt;p&gt;通常我们会使用&lt;code&gt;git init&lt;/code&gt;来初始化Git本地仓库。&lt;/p&gt;
-&pic="https://choue.github.io/images/avatar.png?v=1619459868015 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/&sharesource=qzone&title=笔记：Competitve Programmer&#39;s Handbook (1)&pics=https://choue.github.io/images/avatar.png?v=1619459868015&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://choue.github.io/post/bi-ji-competitve-programmers-handbook-1/&sharesource=weibo&title=笔记：Competitve Programmer&#39;s Handbook (1) + " - " + &pic="https://choue.github.io/images/avatar.png?v=1619459868015 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -316,16 +362,6 @@ rm -rf old-repo.git
                                                                                     <span>&#x6807;&#x7B7E;:</span>
                                                                                     <span class="tag ">
                         
-                        
-                        <a href="https://choue.github.io/tag/AfVc4u-8r/">#
-                    Git
-                        </a>
-                        
-                        <a href="https://choue.github.io/tag/xE9AF5b0t4/">#
-                    Github
-                        </a>
-                        
-                            
                                 </span>
                                                                                 </div>
                                                                                 <div>
@@ -340,11 +376,15 @@ rm -rf old-repo.git
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://choue.github.io/post/wsl2/">
-                                                                                            WSL2
+                                                                                        <a class="prev" rel="prev" href="https://choue.github.io/post/bi-ji-competitve-programmers-handbook-2/">
+                                                                                            笔记：Competitve Programmer&#39;s Handbook (2)
                                                                                         </a>
                                                                                         
                                                                                             
+                                                                                                <a class="next" rel="next" href="https://choue.github.io/post/shi-yong-jupyter-notebook/">
+                                                                                                    使用Jupyter NoteBook
+                                                                                                </a>
+                                                                                                
                                                                                 </section>
                     </article>
                 </div>
